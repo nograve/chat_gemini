@@ -1,8 +1,9 @@
-import 'package:chat_gemini/application/router/error/error_page.dart';
 import 'package:chat_gemini/application/router/scaffold_with_nested_navigation.dart';
 import 'package:chat_gemini/pages/chat/chat_page.dart';
 import 'package:chat_gemini/pages/history/history_page.dart';
 import 'package:chat_gemini/pages/profile/profile_page.dart';
+import 'package:chat_gemini/pages/sign_in/sign_in_page.dart';
+import 'package:chat_gemini/pages/sign_up/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,9 +13,23 @@ final shellNavigatorStructuralKey = GlobalKey<NavigatorState>();
 final shellNavigatorBehavioralKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
-  initialLocation: ChatPage.routeName,
+  initialLocation: SignInPage.routeName,
   navigatorKey: _rootNavigatorKey,
   routes: [
+    GoRoute(
+      path: SignInPage.routeName,
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: SignInPage(),
+      ),
+      routes: [
+        GoRoute(
+          path: SignUpPage.routeName, // No leading slash here
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: SignUpPage(),
+          ),
+        ),
+      ],
+    ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return ScaffoldWithNestedNavigation(navigationShell: navigationShell);
@@ -31,11 +46,9 @@ final router = GoRouter(
             ),
           ],
         ),
-        // second branch (B)
         StatefulShellBranch(
           navigatorKey: shellNavigatorBehavioralKey,
           routes: [
-            // top route inside branch
             GoRoute(
               path: HistoryPage.routeName,
               pageBuilder: (context, state) => const NoTransitionPage(
@@ -47,29 +60,11 @@ final router = GoRouter(
         StatefulShellBranch(
           navigatorKey: shellNavigatorStructuralKey,
           routes: [
-            // top route inside branch
             GoRoute(
               path: ProfilePage.routeName,
               pageBuilder: (context, state) => const NoTransitionPage(
                 child: ProfilePage(),
               ),
-              // routes: [
-              //   // child route
-              //   GoRoute(
-              //     path: PatternPage.routeName,
-              //     pageBuilder: (context, state) {
-              //       final arguments = state.extra;
-              //
-              //       return NoTransitionPage(
-              //         child: arguments is PatternPageArguments
-              //             ? PatternPage(
-              //                 arguments: arguments,
-              //               )
-              //             : const ErrorPage(),
-              //       );
-              //     },
-              //   ),
-              // ],
             ),
           ],
         ),
