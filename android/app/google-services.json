@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "795386471482",
+    "project_id": "chat-gemini-5a384",
+    "storage_bucket": "chat-gemini-5a384.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795386471482:android:ab443e80a7c1c6e305c103",
+        "android_client_info": {
+          "package_name": "com.nograve.chat_gemini"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd1z9rbhy7NpkMxvlx6usJ6UabJIqfxNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

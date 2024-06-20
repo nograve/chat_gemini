@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:chat_gemini/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 
@@ -20,7 +21,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Chat Gemini')),
+      appBar: AppBar(title: const Text(appName)),
       body: Column(
         children: [
           Expanded(

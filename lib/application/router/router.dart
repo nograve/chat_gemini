@@ -21,14 +21,12 @@ final router = GoRouter(
       pageBuilder: (context, state) => const NoTransitionPage(
         child: SignInPage(),
       ),
-      routes: [
-        GoRoute(
-          path: SignUpPage.routeName, // No leading slash here
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: SignUpPage(),
-          ),
-        ),
-      ],
+    ),
+    GoRoute(
+      path: SignUpPage.routeName,
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: SignUpPage(),
+      ),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {

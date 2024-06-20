@@ -10,15 +10,17 @@ class EmailFormField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       decoration: const InputDecoration(labelText: 'Email'),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter your email';
-        }
-        if (!value.contains('@')) {
-          return 'Please enter a valid email';
-        }
-        return null;
-      },
+      validator: _emailValidator,
     );
+  }
+
+  String? _emailValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your email';
+    }
+    if (!value.contains('@')) {
+      return 'Please enter a valid email';
+    }
+    return null;
   }
 }
